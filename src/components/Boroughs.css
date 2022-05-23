@@ -1,14 +1,13 @@
 .boroughsContainer {
-  /* display:flex;
-    flex-direction:column;
-    align-items: center; */
+  position: relative;
+  width: 100%;
 }
 
 .boroughDescription {
   width: 100%;
+  height:190px;
+  overflow: scroll;
 }
-
-
 
 .title-arrow-container {
   position: relative;

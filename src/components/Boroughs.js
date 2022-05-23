@@ -1,62 +1,38 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 
-import NeighborhoodsLabels from "./Neighborhoods";
-import boroughsData from "../data/boroughsData.json";
+import NeighborhoodsLabels from "./NeighborhoodsLabels";
 import "./Boroughs.css";
 
-//--- get the neighborhood names from each borough --- :
-const selectNeighborhoodNames = array => {
-  const boroughs = [
-    "Manhattan",
-    "Queens",
-    "Brooklyn",
-    "Bronx",
-    "Staten Island"
-  ];
-
-  let nhoodsArr = [];
-  for (var i = 0; i < boroughs.length; i++) {
-    let borough = boroughs[i];
-    let neighborhoods = array
-      .filter(item => item.Borough === borough)
-      .map(({ Description, the_geom, Borough, ...rest }) => {
-        return rest;
-      });
-
-    let neighborhoodsAlone = [];
-    neighborhoods.map(item => {
-      neighborhoodsAlone.push(Object.values(item)[0]);
-    });
-    nhoodsArr.push({ borough, neighborhoods: neighborhoodsAlone });
-  }
-  return nhoodsArr;
-};
-
-//------- ------ ------ ------ ------ ------ ------ ------ ------ ------
-
-const neighborhoods = selectNeighborhoodNames(boroughsData);
-
-const Boroughs = () => {
+const Boroughs = ({ neighborhoods, onSelectedChange }) => {
   const [activeIndex, setActiveIndex] = useState(null);
+  const ref = useRef();
 
-  let prevActiveIndex;
+  let display;
 
   const renderedItems = neighborhoods.map((item, index) => {
-    let display = index === activeIndex ? "active" : "doNotDisplay";
+    display = index === activeIndex ? "active" : "doNotDisplay";
 
     return (
       <React.Fragment key={item.borough}>
-        <div className="title-arrow-container">
+        <div ref={ref} className="title-arrow-container">
           <div
             style={{ cursor: "pointer", marginBottom: "10px" }}
             className="boroughTitle"
-            onClick={() => {
+            onClick={e => {
+
+              if (e.target.className.indexOf("neighborhood") > -1) {
+                return;
+              }
+              
               setActiveIndex(index === activeIndex ? null : index);
             }}
           >
             {item.borough}
             <div className={"boroughDescription " + display}>
-              <NeighborhoodsLabels neighborhoods={item.neighborhoods} />
+              <NeighborhoodsLabels
+                neighborhoods={item.neighborhoods}
+                onSelectedChange={onSelectedChange}
+              />
             </div>
           </div>
           <i className="fa-solid fa-angle-down"></i>

@@ -12,3 +12,7 @@
     margin:4px;
     padding:7px 12px;
 }
+
+.neighborhood:hover{
+    background-color: rgb(222, 232, 240);
+}

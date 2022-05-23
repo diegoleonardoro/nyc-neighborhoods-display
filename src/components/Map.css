@@ -1,0 +1,22 @@
+.map-container{
+    position:relative;
+    width:90%;
+    height:500px;
+    margin:70px auto;
+    background-color: brown;
+}
+
+.svg-div-container{
+    position:relative;
+    /* width:40%; */
+ 
+}
+
+.mapSvg{
+    position:relative;
+    transform:scale(0.7);
+    right:80px;
+   
+    /* left:50%;
+    transform: translate(-50%, 0%) */
+}
