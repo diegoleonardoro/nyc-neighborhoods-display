@@ -2,7 +2,7 @@ import React from "react";
 import { geoPath, geoMercator } from "d3";
 import "./Marks.css";
 
-const Marks = ({ data, neighborhoodData  }) => {
+const Marks = ({ data, neighborhoodData }) => {
   const projection = geoMercator().fitSize(["960", "500"], data);
   const path = geoPath(projection);
 
@@ -11,13 +11,15 @@ const Marks = ({ data, neighborhoodData  }) => {
     cx_cy = projection(neighborhoodData[0].the_geom);
   }
 
-
+  console.log(neighborhoodData);
 
   return (
     <g className="marks">
       {data.features.map((feature, i) => (
         <path className="mapPath" key={i} d={path(feature)} />
       ))}
+
+   
 
       {cx_cy ? (
         <circle
