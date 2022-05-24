@@ -16,13 +16,14 @@
     position:relative;
     transform:scale(0.7);
     right:80px;
+    overflow: visible;
    
     /* left:50%;
     transform: translate(-50%, 0%) */
 }
 
 .neighborhood-description{
-    background-color: #ffe577;
+    background-color: #FCF3CF;
     width:80%;
     height:100px;
     position:relative;
@@ -31,4 +32,5 @@
     transform:translate(-50%, 0);
     padding:10px;
     overflow: scroll;
+    z-index: 1;
   }

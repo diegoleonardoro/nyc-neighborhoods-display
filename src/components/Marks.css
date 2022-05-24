@@ -8,8 +8,13 @@
   fill: #2d4859;
 }
 
+/* .neighborhoodLine{
+  stroke: #3352ff;
+  stroke-width:2;
+} */
+
 .neighborhoodCircle {
-  fill: #ffe577;
+  fill: #f56410;
 }
 
 
